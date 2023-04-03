@@ -38,9 +38,9 @@
 <p>这样容易导致很高的noise</p>
 <p><img src="/GI%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4f4db7e3-7284-4d2a-bb6f-505022e238cd.png" alt="4f4db7e3-7284-4d2a-bb6f-505022e238cd"></p>
 <p>（类似于MIS中采样光源还是采样brdf，当表面十分粗糙时，较小的光源容易产生较大的方差，也就是上图的noise）</p>
-<p><img src="D:\files\MyCode\CrystalBlog\source_posts\GI阅读笔记\image-20230403162127590.png" alt="image-20230403162127590"></p>
+<p><img src="/GI%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20230403163046768.png" alt="image-20230403163046768"></p>
 <p>四叉树的方案，每个leaf node的radiance相同，direction按Radiance成比例</p>
-<p><img src="D:\files\MyCode\CrystalBlog\source_posts\GI阅读笔记\image-20230403162432091.png" alt="image-20230403162432091"></p>
+<p><img src="/GI%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/image-20230403163136695.png" alt="image-20230403163136695"></p>
 <h3 id="Irradiance-Sharing"><a href="#Irradiance-Sharing" class="headerlink" title="Irradiance Sharing"></a>Irradiance Sharing</h3><p>允许surfel查询neighbour的radiance，以减少noise</p>
 <h3 id="Ray-Sorting"><a href="#Ray-Sorting" class="headerlink" title="Ray Sorting"></a>Ray Sorting</h3><p>Ray binning，把相近位置和方向的光线分组在一个Bin里，加速计算</p>
 <h3 id="Many-Light"><a href="#Many-Light" class="headerlink" title="Many Light"></a>Many Light</h3><p>根据概率随机采样一些光线</p>
