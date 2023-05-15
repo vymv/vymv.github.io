@@ -9,7 +9,7 @@
   },
   hexoVersion: '6.3.0'
 } </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Crystal's Blog" type="application/atom+xml">
-</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">基础模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lora"><span class="toc-number">1.2.</span> <span class="toc-text">Lora</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vae"><span class="toc-number">1.3.</span> <span class="toc-text">Vae</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">模型下载使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%BD%91%E7%AB%99"><span class="toc-number">2.1.</span> <span class="toc-text">模型网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%96%9C%E6%AC%A2%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%92%8Clora"><span class="toc-number">2.2.</span> <span class="toc-text">一些喜欢的模型和lora</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">基础模型下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lora%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">lora下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vae%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">vae下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E5%93%81%E7%94%9F%E6%88%90"><span class="toc-number">2.6.</span> <span class="toc-text">作品生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">功能及参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%94%9F%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">文生图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%94%9F%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">图生图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BE%E5%A4%A7"><span class="toc-number">3.3.</span> <span class="toc-text">放大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%8E%A8prompt"><span class="toc-number">3.4.</span> <span class="toc-text">反推prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.</span> <span class="toc-text">图片信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%8D%E5%AD%90%E5%BE%AE%E8%B0%83"><span class="toc-number">3.6.</span> <span class="toc-text">种子微调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D%E6%89%8B%E6%8C%87"><span class="toc-number">3.7.</span> <span class="toc-text">修复手指</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E5%8F%82%E6%95%B0"><span class="toc-number">3.8.</span> <span class="toc-text">一些生僻参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%87%AA%E5%B7%B1%E7%94%9F%E6%88%90%E7%9A%84%E5%A5%BD%E7%9C%8B%E7%9A%84%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">一些自己生成的好看的图</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/images/avatar.jpg"></div><div class="author-info__name text-center">Crystal</div><div class="author-info__description text-center">A CS student studing at NJU</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">4</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/images/topimage7.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Crystal's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">StableDiffusion初尝试和探索</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-05-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/AI%E7%BB%98%E7%94%BB/">AI绘画</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>业余时间研究了一下SD，总结一下入门学到的东西吧</p>
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">基础模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lora"><span class="toc-number">1.2.</span> <span class="toc-text">Lora</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vae"><span class="toc-number">1.3.</span> <span class="toc-text">Vae</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">模型下载使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%BD%91%E7%AB%99"><span class="toc-number">2.1.</span> <span class="toc-text">模型网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%96%9C%E6%AC%A2%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%92%8Clora"><span class="toc-number">2.2.</span> <span class="toc-text">一些喜欢的模型和lora</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">基础模型下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lora%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">lora下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vae%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">vae下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E5%93%81%E7%94%9F%E6%88%90"><span class="toc-number">2.6.</span> <span class="toc-text">作品生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">功能及参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%94%9F%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">文生图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%94%9F%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">图生图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BE%E5%A4%A7"><span class="toc-number">3.3.</span> <span class="toc-text">放大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%8E%A8prompt"><span class="toc-number">3.4.</span> <span class="toc-text">反推prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.</span> <span class="toc-text">图片信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%8D%E5%AD%90%E5%BE%AE%E8%B0%83"><span class="toc-number">3.6.</span> <span class="toc-text">种子微调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D%E6%89%8B%E6%8C%87"><span class="toc-number">3.7.</span> <span class="toc-text">修复手指</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E5%8F%82%E6%95%B0"><span class="toc-number">3.8.</span> <span class="toc-text">一些生僻参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%87%AA%E5%B7%B1%E7%94%9F%E6%88%90%E7%9A%84%E5%A5%BD%E7%9C%8B%E7%9A%84%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">一些自己生成的好看的图</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/images/avatar.jpg"></div><div class="author-info__name text-center">Crystal</div><div class="author-info__description text-center">A CS student studing at NJU</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">4</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/images/topimage7.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Crystal's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">StableDiffusion初尝试和探索</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-05-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/AI%E7%BB%98%E7%94%BB/">AI绘画</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>业余时间研究了一下SD，总结一下入门学到的东西吧。</p>
 <h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>​	分为基础模型和微调模型（lora等）。</p>
 <h4 id="基础模型"><a href="#基础模型" class="headerlink" title="基础模型"></a>基础模型</h4><ul>
 <li>基础模型通常非常大，以著名动漫模型anything为例，fp32的精度模型大小为4.27G，fp16的精度大小为2.13G（精度越高出图质量越好）。</li>
@@ -26,24 +26,24 @@
 
 
 <h3 id="模型下载使用"><a href="#模型下载使用" class="headerlink" title="模型下载使用"></a>模型下载使用</h3><h4 id="模型网站"><a href="#模型网站" class="headerlink" title="模型网站"></a>模型网站</h4><ul>
-<li><p><a target="_blank" rel="noopener" href="https://civitai.com/">civitai</a>（需要魔法，推荐）</p>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/">civitai</a>（需要魔法，推荐）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://huggingface.co/">huggingface</a>（综合模型网站，不只有AI绘画模型的网站）</p>
+<li><p><a target="_blank" rel="noopener" href="https://huggingface.co/">huggingface</a>（综合模型网站，不只有AI绘画模型的网站）。</p>
 </li>
 </ul>
 <h4 id="一些喜欢的模型和lora"><a href="#一些喜欢的模型和lora" class="headerlink" title="一些喜欢的模型和lora"></a>一些喜欢的模型和lora</h4><ul>
-<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/4855/anythingelse-v4">AnythingElse V4</a> 用来画二次元人物，不太会画手。</p>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/4855/anythingelse-v4">AnythingElse V4</a> （用来画二次元人物，不太会画手）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/4468/counterfeit-v30">Counterfeit-V3.0</a> 喜欢用来画风景，搭配Lora：<a target="_blank" rel="noopener" href="https://civitai.com/models/28511/ghiblistyleconceptsceneryv3">Ghibli_Style_Concept_scenery_V3</a></p>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/4468/counterfeit-v30">Counterfeit-V3.0</a> （喜欢用来画风景，搭配Lora：<a target="_blank" rel="noopener" href="https://civitai.com/models/28511/ghiblistyleconceptsceneryv3">Ghibli_Style_Concept_scenery_V3</a>）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/27259/tmnd-mix">TMND-Mix</a> 二次元风景和人物都很擅长。</p>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/27259/tmnd-mix">TMND-Mix</a> （二次元风景和人物都很擅长）。</p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/16997?modelVersionId=20072">Standing Full Body with Background Style LoRA</a> 让二次元角色立绘拥有小背景。</p>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/16997?modelVersionId=20072">Standing Full Body with Background Style LoRA</a> （让二次元角色立绘拥有小背景）。</p>
 </li>
 </ul>
 <h4 id="基础模型下载使用"><a href="#基础模型下载使用" class="headerlink" title="基础模型下载使用"></a>基础模型下载使用</h4><p>​	以Anything为例：</p>
 <p>​	在<a target="_blank" rel="noopener" href="https://huggingface.co/andite/anything-v4.0/tree/main">hugging face</a>打开可以看到很多选择，有.ckpt后缀的，也有.safetensor后缀。</p>
-<p>​	safetensor比ckpt更安全，加载时间更快。更具体的区别详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611248399">这里</a></p>
+<p>​	safetensor比ckpt更安全，加载时间更快。更具体的区别详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611248399">这里</a>。</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505231557638.png" alt="image-20230505231557638"></p>
 <p>​	打开<a target="_blank" rel="noopener" href="https://civitai.com/models/4855/anythingelse-v4">C站</a>，右侧的信息中可以看到基础模型的type是checkpoint。</p>
 <p>​	Hash代表了该模型的id，如果是AI生成的图片，我们都能读取其prompt及参数信息以及模型hash，不同版本的同种模型hash也会不同。</p>
@@ -54,29 +54,29 @@
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505233243426.png" alt="image-20230505233243426"></p>
 <p>​	切换大模型由于参数量巨大，通常需要等待几分钟的时间。</p>
 <p>​	一些大模型会提供官方的negative prompt，需要一并下载，例如<a target="_blank" rel="noopener" href="https://civitai.com/models/4468/counterfeit-v30">这个</a>，下好后放置在stable-diffusion-webui&#x2F;embeddings目录下。</p>
-<h4 id="lora下载使用"><a href="#lora下载使用" class="headerlink" title="lora下载使用"></a>lora下载使用</h4><p>​	以<a target="_blank" rel="noopener" href="https://civitai.com/models/16997/standing-full-body-with-background-style-lora">Standing Full Body with Background Style LoRA</a>为例</p>
-<p>​	下载后放置在stable-diffusion-webui&#x2F;models&#x2F;Lora下</p>
-<p>​	在右侧生成下面的第三个按钮可以选择Lora</p>
+<h4 id="lora下载使用"><a href="#lora下载使用" class="headerlink" title="lora下载使用"></a>lora下载使用</h4><p>​	以<a target="_blank" rel="noopener" href="https://civitai.com/models/16997/standing-full-body-with-background-style-lora">Standing Full Body with Background Style LoRA</a>为例，</p>
+<p>​	下载后放置在stable-diffusion-webui&#x2F;models&#x2F;Lora下，</p>
+<p>​	在右侧生成下面的第三个按钮可以选择Lora：</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505233615584.png" alt="image-20230505233615584"></p>
 <p>​	选择后，会被自动加入到prompt中，冒号后面可以调节lora权重，可以调用多个不同的lora并调节比例。</p>
-<h4 id="vae下载使用"><a href="#vae下载使用" class="headerlink" title="vae下载使用"></a>vae下载使用</h4><p>​	模型通常会有配套的vae</p>
+<h4 id="vae下载使用"><a href="#vae下载使用" class="headerlink" title="vae下载使用"></a>vae下载使用</h4><p>​	模型通常会有配套的vae。</p>
 <p>​	根据<a target="_blank" rel="noopener" href="https://huggingface.co/andite/anything-v4.0/discussions/65">这个帖子</a>，下载适合Anything的vae：<a target="_blank" rel="noopener" href="https://huggingface.co/hakurei/waifu-diffusion-v1-4/blob/main/vae/kl-f8-anime2.ckpt">kl-f8-anime2.ckpt</a></p>
-<p>​	下好之后放置在stable-diffusion-webui&#x2F;models&#x2F;VAE下</p>
+<p>​	下好之后放置在stable-diffusion-webui&#x2F;models&#x2F;VAE下，</p>
 <p>​	在这里设置VAE：</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505234709733.png" alt="image-20230505234709733"></p>
 <h4 id="作品生成"><a href="#作品生成" class="headerlink" title="作品生成"></a>作品生成</h4><ul>
-<li><p>通常先生成低分辨率图像</p>
+<li><p>通常先生成低分辨率图像。</p>
 </li>
-<li><p>再通过放大，微调和修复细节</p>
+<li><p>再通过放大，微调和修复细节。</p>
 </li>
-<li><p>设置好模型prompt及各种参数后，点击生成，就能在webui界面看到结果，output目录下也会保存每一张生成的图片</p>
+<li><p>设置好模型prompt及各种参数后，点击生成，就能在webui界面看到结果，output目录下也会保存每一张生成的图片。</p>
 </li>
 </ul>
 <h3 id="功能及参数"><a href="#功能及参数" class="headerlink" title="功能及参数"></a>功能及参数</h3><h4 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h4><p>​	prompt的权重和prompt的<strong>顺序</strong>有关，写在前面的prompt<strong>权重更高</strong>。</p>
-<p>​	（发现模型生成的是黄头发，想让它画黑头发，但在prompt末尾加了black hair，模型却还是不听我的。。。后来知道是权重太低了）</p>
+<p>​	<small style="opacity:0.5">（发现模型生成的是黄头发，想让它画黑头发，但在prompt末尾加了black hair，模型却还是不听我的。。。后来知道是权重太低了）</small></p>
 <p>​	使用括号：</p>
 <ul>
-<li><p>(prompt)，能将该词的权重乘1.1，如果双层括号，则乘两次1.1以此类推</p>
+<li><p>(prompt)，能将该词的权重乘1.1，如果双层括号，则乘两次1.1以此类推。</p>
 </li>
 <li><p>相反的中括号[]能将权重降低1.1倍。</p>
 </li>
@@ -86,9 +86,9 @@
 </ul>
 <p>​	通常prompt以这样的<strong>格式</strong>书写：</p>
 <ul>
-<li><p>第一段：画质 tag，画风 tag</p>
+<li><p>第一段：画质 tag，画风 tag。</p>
 </li>
-<li><p>第二段：画面主体，主体强调，主体细节概括（主体可以是人、事、物、景）画面核心内容</p>
+<li><p>第二段：画面主体，主体强调，主体细节概括（主体可以是人、事、物、景）画面核心内容。</p>
 </li>
 <li><p>第三段：画面场景细节，或人物细节，embedding tag（Lora）。</p>
 </li>
@@ -108,14 +108,14 @@
 </blockquote>
 <p><strong>一些参数</strong></p>
 <ul>
-<li><strong>采样方法：</strong>一般都选择DPM++ 2M Karras</li>
+<li><strong>采样方法：</strong>一般都选择DPM++ 2M Karras。</li>
 <li><strong>迭代步数（Steps）：</strong>顾名思义，迭代次数越高，生成的图细节越好，需要的时间也越长。</li>
 <li><strong>提示词相关性（CFG）：</strong>一般在图生图中使用，文生图默认即可。</li>
 <li><strong>随机种子：</strong>-1代表随机选择一个种子，也可以填写指定的种子，AI出图的随机性来源于此。</li>
 </ul>
 <h4 id="图生图"><a href="#图生图" class="headerlink" title="图生图"></a>图生图</h4><p><strong>一些参数</strong></p>
 <ul>
-<li><strong>提示词相关性（CFG）：</strong>顾名思义</li>
+<li><strong>提示词相关性（CFG）：</strong>顾名思义。</li>
 <li><strong>重绘幅度（Denoising）：</strong>不清楚为什么“降噪”代表重绘幅度，通常如果是放大修复细节，重绘幅度设置为0.1~0.2，如果普通图生图则0.5~0.9都有。</li>
 </ul>
 <p>​	如下图，左侧为原图，中间重绘幅度为，还能清楚地看到画卷展开，右侧重绘幅度为，已经看不到画卷了。</p>
@@ -144,14 +144,14 @@
 <blockquote>
 <p>​	a woman dressed in a white and gold outfit with a cat on her lap and a clock on her arm, Fan Qi, official art, a character portrait, ukiyo-e</p>
 </blockquote>
-<p>​	但显然不是cat而是fox，手摇铃被描述为clock，可能是训练的时候没见过吧</p>
+<p>​	但显然不是cat而是fox，手摇铃被描述为clock，可能是训练的时候没见过吧。</p>
 <p>​	用上面的prompt再生成一张图试试：</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/QQ%E5%9B%BE%E7%89%8720230515000205.jpg" alt="326"></p>
 <h4 id="图片信息"><a href="#图片信息" class="headerlink" title="图片信息"></a>图片信息</h4><p>​	顾名思义，能读到AI作图的prompt和参数。可以用来学习网络上各种优秀作品的prompt。</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230506000831230.png" alt="image-20230506000831230"></p>
 <h4 id="种子微调"><a href="#种子微调" class="headerlink" title="种子微调"></a>种子微调</h4><img src="/StableDiffusion初尝试和探索/QQ图片20230515000503.jpg" alt="QQ图片20230515000503" style="zoom:50%;" />
 
-<p>​	生成了一张不错的图，想多生成一些类似的，挑一张更好的</p>
+<p>​	生成了一张不错的图，想多生成一些类似的，挑一张更好的。</p>
 <ul>
 <li>在随机种子这里打钩</li>
 </ul>
@@ -167,7 +167,7 @@
 <h4 id="修复手指"><a href="#修复手指" class="headerlink" title="修复手指"></a>修复手指</h4><p>​	画不好手指是AI模型的通病了，通常有以下几种解决方法：</p>
 <ul>
 <li><p>inpaint（局部重绘）</p>
-<p>通过在异样手指处手绘蒙版，修复手指</p>
+<p>通过在异样手指处手绘蒙版，修复手指。</p>
 </li>
 </ul>
 <div style="display:flex;">
