@@ -107,13 +107,17 @@
 <p>​	nsfw,(EasyNegative),(worst quality, low quality:1.4), (bad anatomy), (inaccurate limb:1.2),poorly eyes, extra digit,fewer digits,six fingers,(extra arms,extra legs:1.2),text,cropped,jpegartifacts,(signature), (watermark), username,blurry,more than five fingers in one palm,no thumb,no nails, title, multiple view, Reference sheet, curvy, plump, fat, muscular female, strabismus,</p>
 </blockquote>
 <p><strong>一些参数</strong></p>
-<p>​	<strong>采样方法：</strong>一般都选择DPM++ 2M Karras</p>
-<p>​	<strong>迭代步数（Steps）：</strong>顾名思义，迭代次数越高，生成的图细节越好，需要的时间也越长。</p>
-<p>​	<strong>提示词相关性（CFG）：</strong>一般在图生图中使用，文生图默认即可。</p>
-<p>​	<strong>随机种子：</strong>-1代表随机选择一个种子，也可以填写指定的种子，AI出图的随机性来源于此。</p>
+<ul>
+<li><strong>采样方法：</strong>一般都选择DPM++ 2M Karras</li>
+<li><strong>迭代步数（Steps）：</strong>顾名思义，迭代次数越高，生成的图细节越好，需要的时间也越长。</li>
+<li><strong>提示词相关性（CFG）：</strong>一般在图生图中使用，文生图默认即可。</li>
+<li><strong>随机种子：</strong>-1代表随机选择一个种子，也可以填写指定的种子，AI出图的随机性来源于此。</li>
+</ul>
 <h4 id="图生图"><a href="#图生图" class="headerlink" title="图生图"></a>图生图</h4><p><strong>一些参数</strong></p>
-<p>​	<strong>提示词相关性（CFG）：</strong>顾名思义</p>
-<p>​	<strong>重绘幅度（Denoising）：</strong>不清楚为什么“降噪”代表重绘幅度，通常如果是放大修复细节，重绘幅度设置为0.1~0.2，如果普通图生图则0.5~0.9都有。</p>
+<ul>
+<li><strong>提示词相关性（CFG）：</strong>顾名思义</li>
+<li><strong>重绘幅度（Denoising）：</strong>不清楚为什么“降噪”代表重绘幅度，通常如果是放大修复细节，重绘幅度设置为0.1~0.2，如果普通图生图则0.5~0.9都有。</li>
+</ul>
 <p>​	如下图，左侧为原图，中间重绘幅度为，还能清楚地看到画卷展开，右侧重绘幅度为，已经看不到画卷了。</p>
 <div style="display:flex; justify-content:center; align-items:center;">
   <img src="/StableDiffusion初尝试和探索/279.png" >
@@ -137,7 +141,9 @@
 <h4 id="反推prompt"><a href="#反推prompt" class="headerlink" title="反推prompt"></a>反推prompt</h4><p>​	试了试CLIP反推，感觉很多细节没有描写到位。</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/326.webp" alt="326"></p>
 <p>​	SD给出的prompt是：</p>
-<p>​		a woman dressed in a white and gold outfit with a cat on her lap and a clock on her arm, Fan Qi, official art, a character portrait, ukiyo-e</p>
+<blockquote>
+<p>​	a woman dressed in a white and gold outfit with a cat on her lap and a clock on her arm, Fan Qi, official art, a character portrait, ukiyo-e</p>
+</blockquote>
 <p>​	但显然不是cat而是fox，手摇铃被描述为clock，可能是训练的时候没见过吧</p>
 <p>​	用上面的prompt再生成一张图试试：</p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/QQ%E5%9B%BE%E7%89%8720230515000205.jpg" alt="326"></p>
@@ -179,8 +185,10 @@
 </li>
 </ul>
 <h4 id="一些生僻参数"><a href="#一些生僻参数" class="headerlink" title="一些生僻参数"></a>一些生僻参数</h4><p>​	经常在C站的图片信息里看到的生僻参数的解释。</p>
-<p>​	<strong>ENSD</strong>：默认建议值31337，详见<a target="_blank" rel="noopener" href="https://www.reddit.com/r/StableDiffusion/comments/10d093y/ensd_what_is_it/">这里</a>。</p>
-<p>​	<strong>Clip skip：</strong>默认2，详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/621276242">这里</a>。</p>
+<ul>
+<li><strong>ENSD</strong>：默认建议值31337，详见<a target="_blank" rel="noopener" href="https://www.reddit.com/r/StableDiffusion/comments/10d093y/ensd_what_is_it/">这里</a>。</li>
+<li><strong>Clip skip：</strong>默认2，详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/621276242">这里</a>。</li>
+</ul>
 <h3 id="一些自己生成的好看的图"><a href="#一些自己生成的好看的图" class="headerlink" title="一些自己生成的好看的图"></a>一些自己生成的好看的图</h3><img src="/StableDiffusion初尝试和探索/00175-654345.png" alt="00175-654345" style="zoom:100%;" />
 
 
@@ -203,7 +211,7 @@
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00252-2482152167.png" alt="00252-2482152167"></p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00333-541990144.png" alt="00333-541990144"></p>
 <p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00002-43589576.png" alt="00002-43589576"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Crystal</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://vymv.github.io/StableDiffusion初尝试和探索/">https://vymv.github.io/StableDiffusion初尝试和探索/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://vymv.github.io">Crystal's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI%E7%BB%98%E7%94%BB/">AI绘画</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/StableDiffusion%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/"><span>StableDiffusion本地部署记录</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(/images/topimage7.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2023 By Crystal</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Crystal</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://vymv.github.io/StableDiffusion初尝试和探索/">https://vymv.github.io/StableDiffusion初尝试和探索/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://vymv.github.io">Crystal's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI%E7%BB%98%E7%94%BB/">AI绘画</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/StableDiffusion%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/"><span>StableDiffusion本地部署记录</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(/images/topimage7.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2023 By Crystal</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
