@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="StableDiffusion初尝试和探索"><meta name="keywords" content="AI绘画"><meta name="author" content="vymv"><meta name="copyright" content="vymv"><title>StableDiffusion初尝试和探索 | vymv's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.3.0'
+} </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="vymv's Blog" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">基础模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lora"><span class="toc-number">1.2.</span> <span class="toc-text">Lora</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vae"><span class="toc-number">1.3.</span> <span class="toc-text">Vae</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">模型下载使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%BD%91%E7%AB%99"><span class="toc-number">2.1.</span> <span class="toc-text">模型网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%96%9C%E6%AC%A2%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%92%8Clora"><span class="toc-number">2.2.</span> <span class="toc-text">一些喜欢的模型和lora</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">基础模型下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lora%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">lora下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vae%E4%B8%8B%E8%BD%BD%E4%BD%BF%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">vae下载使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%9C%E5%93%81%E7%94%9F%E6%88%90"><span class="toc-number">2.6.</span> <span class="toc-text">作品生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">功能及参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%94%9F%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">文生图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%94%9F%E5%9B%BE"><span class="toc-number">3.2.</span> <span class="toc-text">图生图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%BE%E5%A4%A7"><span class="toc-number">3.3.</span> <span class="toc-text">放大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%8E%A8prompt"><span class="toc-number">3.4.</span> <span class="toc-text">反推prompt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.</span> <span class="toc-text">图片信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%8D%E5%AD%90%E5%BE%AE%E8%B0%83"><span class="toc-number">3.6.</span> <span class="toc-text">种子微调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D%E6%89%8B%E6%8C%87"><span class="toc-number">3.7.</span> <span class="toc-text">修复手指</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%94%9F%E5%83%BB%E5%8F%82%E6%95%B0"><span class="toc-number">3.8.</span> <span class="toc-text">一些生僻参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%87%AA%E5%B7%B1%E7%94%9F%E6%88%90%E7%9A%84%E5%A5%BD%E7%9C%8B%E7%9A%84%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">一些自己生成的好看的图</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/images/avatar.jpg"></div><div class="author-info__name text-center">vymv</div><div class="author-info__description text-center">A CS student studing at NJU</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">5</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">2</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/images/topimage7.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">vymv's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">StableDiffusion初尝试和探索</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-05-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/AI%E7%BB%98%E7%94%BB/">AI绘画</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>业余时间研究了一下SD，总结一下入门学到的东西吧。</p>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>​	分为基础模型和微调模型（lora等）。</p>
+<h4 id="基础模型"><a href="#基础模型" class="headerlink" title="基础模型"></a>基础模型</h4><ul>
+<li>基础模型通常非常大，以著名动漫模型anything为例，fp32的精度模型大小为4.27G，fp16的精度大小为2.13G（精度越高出图质量越好）。</li>
+<li>有的基础模型擅长二次元创作，有的基础模型擅长真实感创作，可以根据需要切换。</li>
+</ul>
+<h4 id="Lora"><a href="#Lora" class="headerlink" title="Lora"></a>Lora</h4><p>​	Lora是一种对大模型的微调模型，需要配合大模型一起使用，通常只有几百M。</p>
+<p>​	比如，GPT-3有1750亿参数，为了让它能干特定领域的活儿，需要做微调，但是如果直接对GPT-3做微调，成本太高太麻烦了。 </p>
+<p>​	Lora的做法是，冻结预训练好的模型权重参数，然后在每个Transformer块里注入可训练的层，由于不需要对模型的权重参数重新计算梯度，所以，大大减少了需要训练的计算量。 </p>
+<p>​	研究发现，Lora的微调质量与全模型微调相当。</p>
+<p>​	Lora通常由几百张或几千张特定风格的图片训练而成，你也可以训练自己的Lora。</p>
+<h4 id="Vae"><a href="#Vae" class="headerlink" title="Vae"></a>Vae</h4><p>​	可以视为模型的滤镜，如果生成的图片灰暗，饱和度很低，很可能是没有设置Vae，如这张图：</p>
+<img src="/StableDiffusion初尝试和探索/image-20230505235253322.png" style="zoom:50%;" />
+
+
+
+<h3 id="模型下载使用"><a href="#模型下载使用" class="headerlink" title="模型下载使用"></a>模型下载使用</h3><h4 id="模型网站"><a href="#模型网站" class="headerlink" title="模型网站"></a>模型网站</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/">civitai</a>（需要魔法，推荐）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://huggingface.co/">huggingface</a>（综合模型网站，不只有AI绘画模型的网站）。</p>
+</li>
+</ul>
+<h4 id="一些喜欢的模型和lora"><a href="#一些喜欢的模型和lora" class="headerlink" title="一些喜欢的模型和lora"></a>一些喜欢的模型和lora</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/4855/anythingelse-v4">AnythingElse V4</a> （用来画二次元人物，不太会画手）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/4468/counterfeit-v30">Counterfeit-V3.0</a> （喜欢用来画风景，搭配Lora：<a target="_blank" rel="noopener" href="https://civitai.com/models/28511/ghiblistyleconceptsceneryv3">Ghibli_Style_Concept_scenery_V3</a>）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/27259/tmnd-mix">TMND-Mix</a> （二次元风景和人物都很擅长）。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://civitai.com/models/16997?modelVersionId=20072">Standing Full Body with Background Style LoRA</a> （让二次元角色立绘拥有小背景）。</p>
+</li>
+</ul>
+<h4 id="基础模型下载使用"><a href="#基础模型下载使用" class="headerlink" title="基础模型下载使用"></a>基础模型下载使用</h4><p>​	以Anything为例：</p>
+<p>​	在<a target="_blank" rel="noopener" href="https://huggingface.co/andite/anything-v4.0/tree/main">hugging face</a>打开可以看到很多选择，有.ckpt后缀的，也有.safetensor后缀。</p>
+<p>​	safetensor比ckpt更安全，加载时间更快。更具体的区别详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611248399">这里</a>。</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505231557638.png" alt="image-20230505231557638"></p>
+<p>​	打开<a target="_blank" rel="noopener" href="https://civitai.com/models/4855/anythingelse-v4">C站</a>，右侧的信息中可以看到基础模型的type是checkpoint。</p>
+<p>​	Hash代表了该模型的id，如果是AI生成的图片，我们都能读取其prompt及参数信息以及模型hash，不同版本的同种模型hash也会不同。</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505232337468.png" alt="image-20230505232337468"></p>
+<p>​	C站下面有很多用户使用该模型生成的一些出色作品，并提供了prompt参考。</p>
+<p>​	下载好模型后放置在stable-diffusion-webui&#x2F;models&#x2F;Stable-diffusion下。</p>
+<p>​	点集右侧刷新，即可选择自己的模型。</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505233243426.png" alt="image-20230505233243426"></p>
+<p>​	切换大模型由于参数量巨大，通常需要等待几分钟的时间。</p>
+<p>​	一些大模型会提供官方的negative prompt，需要一并下载，例如<a target="_blank" rel="noopener" href="https://civitai.com/models/4468/counterfeit-v30">这个</a>，下好后放置在stable-diffusion-webui&#x2F;embeddings目录下。</p>
+<h4 id="lora下载使用"><a href="#lora下载使用" class="headerlink" title="lora下载使用"></a>lora下载使用</h4><p>​	以<a target="_blank" rel="noopener" href="https://civitai.com/models/16997/standing-full-body-with-background-style-lora">Standing Full Body with Background Style LoRA</a>为例，</p>
+<p>​	下载后放置在stable-diffusion-webui&#x2F;models&#x2F;Lora下，</p>
+<p>​	在右侧生成下面的第三个按钮可以选择Lora：</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505233615584.png" alt="image-20230505233615584"></p>
+<p>​	选择后，会被自动加入到prompt中，冒号后面可以调节lora权重，可以调用多个不同的lora并调节比例。</p>
+<h4 id="vae下载使用"><a href="#vae下载使用" class="headerlink" title="vae下载使用"></a>vae下载使用</h4><p>​	模型通常会有配套的vae。</p>
+<p>​	根据<a target="_blank" rel="noopener" href="https://huggingface.co/andite/anything-v4.0/discussions/65">这个帖子</a>，下载适合Anything的vae：<a target="_blank" rel="noopener" href="https://huggingface.co/hakurei/waifu-diffusion-v1-4/blob/main/vae/kl-f8-anime2.ckpt">kl-f8-anime2.ckpt</a></p>
+<p>​	下好之后放置在stable-diffusion-webui&#x2F;models&#x2F;VAE下，</p>
+<p>​	在这里设置VAE：</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230505234709733.png" alt="image-20230505234709733"></p>
+<h4 id="作品生成"><a href="#作品生成" class="headerlink" title="作品生成"></a>作品生成</h4><ul>
+<li><p>通常先生成低分辨率图像。</p>
+</li>
+<li><p>再通过放大，微调和修复细节。</p>
+</li>
+<li><p>设置好模型prompt及各种参数后，点击生成，就能在webui界面看到结果，output目录下也会保存每一张生成的图片。</p>
+</li>
+</ul>
+<h3 id="功能及参数"><a href="#功能及参数" class="headerlink" title="功能及参数"></a>功能及参数</h3><h4 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h4><p>​	prompt的权重和prompt的<strong>顺序</strong>有关，写在前面的prompt<strong>权重更高</strong>。</p>
+<p>​	<small style="opacity:0.5">（发现模型生成的是黄头发，想让它画黑头发，但在prompt末尾加了black hair，模型却还是不听我的。。。后来知道是权重太低了）</small></p>
+<p>​	使用括号：</p>
+<ul>
+<li><p>(prompt)，能将该词的权重乘1.1，如果双层括号，则乘两次1.1以此类推。</p>
+</li>
+<li><p>相反的中括号[]能将权重降低1.1倍。</p>
+</li>
+<li><p>也可以直接指定权重（black:1.4）</p>
+<p>可根据出图反馈动态调整各词汇的权重。</p>
+</li>
+</ul>
+<p>​	通常prompt以这样的<strong>格式</strong>书写：</p>
+<ul>
+<li><p>第一段：画质 tag，画风 tag。</p>
+</li>
+<li><p>第二段：画面主体，主体强调，主体细节概括（主体可以是人、事、物、景）画面核心内容。</p>
+</li>
+<li><p>第三段：画面场景细节，或人物细节，embedding tag（Lora）。</p>
+</li>
+</ul>
+<p><strong>常用的词汇：</strong></p>
+<p>​	<strong>风景图 prompt</strong></p>
+<blockquote>
+<p>​	Landsape, (masterpiece, best quality:1.2), ultra detailed, cinematic lighting, beautiful lighting,lensflare,raytracing,HDR</p>
+</blockquote>
+<p>​	<strong>二次元 girl prompt</strong></p>
+<blockquote>
+<p>​	1girl,solo,masterpiece, best quality, looking_at_viewer,panorama,Beautiful Lighting,cinematiclighting,ray tracing,lensflare,tachi-e,full body, </p>
+</blockquote>
+<p>​	<strong>negative prompt</strong></p>
+<blockquote>
+<p>​	nsfw,(EasyNegative),(worst quality, low quality:1.4), (bad anatomy), (inaccurate limb:1.2),poorly eyes, extra digit,fewer digits,six fingers,(extra arms,extra legs:1.2),text,cropped,jpegartifacts,(signature), (watermark), username,blurry,more than five fingers in one palm,no thumb,no nails, title, multiple view, Reference sheet, curvy, plump, fat, muscular female, strabismus,</p>
+</blockquote>
+<p><strong>一些参数</strong></p>
+<ul>
+<li><strong>采样方法：</strong>一般都选择DPM++ 2M Karras。</li>
+<li><strong>迭代步数（Steps）：</strong>顾名思义，迭代次数越高，生成的图细节越好，需要的时间也越长。</li>
+<li><strong>提示词相关性（CFG）：</strong>一般在图生图中使用，文生图默认即可。</li>
+<li><strong>随机种子：</strong>-1代表随机选择一个种子，也可以填写指定的种子，AI出图的随机性来源于此。</li>
+</ul>
+<h4 id="图生图"><a href="#图生图" class="headerlink" title="图生图"></a>图生图</h4><p><strong>一些参数</strong></p>
+<ul>
+<li><strong>提示词相关性（CFG）：</strong>顾名思义。</li>
+<li><strong>重绘幅度（Denoising）：</strong>不清楚为什么“降噪”代表重绘幅度，通常如果是放大修复细节，重绘幅度设置为0.1~0.2，如果普通图生图则0.5~0.9都有。</li>
+</ul>
+<p>​	如下图，左侧为原图，中间重绘幅度为，还能清楚地看到画卷展开，右侧重绘幅度为，已经看不到画卷了。</p>
+<div style="display:flex; justify-content:center; align-items:center;">
+  <img src="/StableDiffusion初尝试和探索/279.png" >
+  <img src="/StableDiffusion初尝试和探索/00010-53652654.png" >
+  <img src="/StableDiffusion初尝试和探索/00002-604226150.png" >
+</div>
+
+
+<h4 id="放大"><a href="#放大" class="headerlink" title="放大"></a>放大</h4><p>​	可以是纯放大。</p>
+<p>​	也可以用来修复细节，给予一定的重绘幅度，画面有时会出现一些较为明显的向好改变。</p>
+<p>​	例如下面这张，除了手部，其他部分都不错。</p>
+<img src="/StableDiffusion初尝试和探索/00058-452352455.png" alt="00058-452352455"  />
+
+<p>​	放大后：</p>
+<img src="/StableDiffusion初尝试和探索/00004-1929881450.png" alt="00004-1929881450" style="zoom:50%;" />
+
+<p>​	因为negative prompt中给bad finger加了很高的权重，模型倾向于不画右手了。。。</p>
+<p>​	后来调了种子又出了一张还不错的：</p>
+<img src="/StableDiffusion初尝试和探索/1.png" alt="1" style="zoom: 33%;" />
+
+<h4 id="反推prompt"><a href="#反推prompt" class="headerlink" title="反推prompt"></a>反推prompt</h4><p>​	试了试CLIP反推，感觉很多细节没有描写到位。</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/326.webp" alt="326"></p>
+<p>​	SD给出的prompt是：</p>
+<blockquote>
+<p>​	a woman dressed in a white and gold outfit with a cat on her lap and a clock on her arm, Fan Qi, official art, a character portrait, ukiyo-e</p>
+</blockquote>
+<p>​	但显然不是cat而是fox，手摇铃被描述为clock，可能是训练的时候没见过吧。</p>
+<p>​	用上面的prompt再生成一张图试试：</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/QQ%E5%9B%BE%E7%89%8720230515000205.jpg" alt="326"></p>
+<h4 id="图片信息"><a href="#图片信息" class="headerlink" title="图片信息"></a>图片信息</h4><p>​	顾名思义，能读到AI作图的prompt和参数。可以用来学习网络上各种优秀作品的prompt。</p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230506000831230.png" alt="image-20230506000831230"></p>
+<h4 id="种子微调"><a href="#种子微调" class="headerlink" title="种子微调"></a>种子微调</h4><img src="/StableDiffusion初尝试和探索/QQ图片20230515000503.jpg" alt="QQ图片20230515000503" style="zoom:50%;" />
+
+<p>​	生成了一张不错的图，想多生成一些类似的，挑一张更好的。</p>
+<ul>
+<li>在随机种子这里打钩</li>
+</ul>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/image-20230515000707407.png" alt="image-20230515000707407"></p>
+<p>​	随机种子和差异随机种子都填写这张图片的Seed</p>
+<ul>
+<li><p>调整差异强度，例如0.18</p>
+</li>
+<li><p>调整每批数量，例如4，点击生成</p>
+</li>
+</ul>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/$VH@RU86XBX_G9%60ZQZ1HQ5R.jpg" alt="img"></p>
+<h4 id="修复手指"><a href="#修复手指" class="headerlink" title="修复手指"></a>修复手指</h4><p>​	画不好手指是AI模型的通病了，通常有以下几种解决方法：</p>
+<ul>
+<li><p>inpaint（局部重绘）</p>
+<p>通过在异样手指处手绘蒙版，修复手指。</p>
+</li>
+</ul>
+<div style="display:flex;">
+  <img src="/StableDiffusion初尝试和探索/00000-3058949938.png" >
+  <img src="/StableDiffusion初尝试和探索/00007-3058949938.png" >
+</div>
+
+<ul>
+<li><p>放大</p>
+<p>（见上文）</p>
+</li>
+<li><p>control net（TODO）</p>
+</li>
+<li><p>Lora（TODO）</p>
+</li>
+</ul>
+<h4 id="一些生僻参数"><a href="#一些生僻参数" class="headerlink" title="一些生僻参数"></a>一些生僻参数</h4><p>​	经常在C站的图片信息里看到的生僻参数的解释。</p>
+<ul>
+<li><strong>ENSD</strong>：默认建议值31337，详见<a target="_blank" rel="noopener" href="https://www.reddit.com/r/StableDiffusion/comments/10d093y/ensd_what_is_it/">这里</a>。</li>
+<li><strong>Clip skip：</strong>默认2，详见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/621276242">这里</a>。</li>
+</ul>
+<h3 id="一些自己生成的好看的图"><a href="#一些自己生成的好看的图" class="headerlink" title="一些自己生成的好看的图"></a>一些自己生成的好看的图</h3><img src="/StableDiffusion初尝试和探索/00175-654345.png" alt="00175-654345" style="zoom:100%;" />
+
+
+
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00003-24352435.png" alt="00003-24352435"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00062-365645534.png" alt="00062-365645534"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00102-2768684264.png" alt="00102-2768684264"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00051-653425.png" alt="00051-653425"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00241-470777179.png" alt="00241-470777179"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00168-3250371279.png" alt="00168-3250371279"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00325-3193787633-1683470099936.png" alt="00325-3193787633"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00020-264466535.png" alt="00020-264466535"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00313-2789391629.png" alt="00313-2789391629"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00363-654364532543.png" alt="00363-654364532543"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00233-4038965757.png" alt="00233-4038965757"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00305-2867403363.png" alt="00305-2867403363"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00323-3207705890.png" alt="00323-3207705890"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00018-6546345.png" alt="00018-6546345"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00296-1539898891.png" alt="00296-1539898891"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00252-2482152167.png" alt="00252-2482152167"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00333-541990144.png" alt="00333-541990144"></p>
+<p><img src="/StableDiffusion%E5%88%9D%E5%B0%9D%E8%AF%95%E5%92%8C%E6%8E%A2%E7%B4%A2/00002-43589576.png" alt="00002-43589576"></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">vymv</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://vymv.github.io/StableDiffusion初尝试和探索/">https://vymv.github.io/StableDiffusion初尝试和探索/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://vymv.github.io">vymv's Blog</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI%E7%BB%98%E7%94%BB/">AI绘画</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/%E5%B0%B1%E5%9C%A8%E6%98%A8%E5%A4%A9%EF%BC%81%E9%97%AB%E4%BB%A4%E7%90%AA%E8%AE%BF%E9%97%AE%E4%BA%86%E6%88%91%E4%BB%AC%E7%BB%84%EF%BC%81%EF%BC%81%EF%BC%81/"><i class="fa fa-chevron-left">  </i><span>就在昨天！闫令琪访问了我们组！！！</span></a></div><div class="next-post pull-right"><a href="/StableDiffusion%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E8%AE%B0%E5%BD%95/"><span>StableDiffusion本地部署记录</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer class="footer-bg" style="background-image: url(/images/topimage7.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2024 By vymv</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
