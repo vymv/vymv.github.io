@@ -6,7 +6,7 @@
   <link href="https://vymv.github.io/atom.xml" rel="self"/>
   
   <link href="https://vymv.github.io/"/>
-  <updated>2023-07-23T09:59:23.319Z</updated>
+  <updated>2024-09-16T15:01:56.282Z</updated>
   <id>https://vymv.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>球谐Deringing</title>
+    <link href="https://vymv.github.io/%E7%90%83%E8%B0%90Deringing/"/>
+    <id>https://vymv.github.io/%E7%90%83%E8%B0%90Deringing/</id>
+    <published>2024-09-16T15:01:56.000Z</published>
+    <updated>2024-09-16T15:01:56.282Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>用一个周末训练了一个AI歌手</title>
+    <link href="https://vymv.github.io/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/"/>
+    <id>https://vymv.github.io/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/</id>
+    <published>2023-08-15T09:44:43.000Z</published>
+    <updated>2024-09-19T03:49:50.789Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>Github上大名鼎鼎的<a href="https://github.com/svc-develop-team/so-vits-svc">so-vits-svc</a></p><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>8小时的直播录音，主要为弹唱，还有少部分的说话和笑声。</p><h4 id="分离人声"><a href="#分离人声" class="headerlink" title="分离人声"></a>分离人声</h4><p>使用的是UVR5（Ultimate Vocal Remover），需要预先下载模型放置在models下</p><p>首先使用Demucs<strong>分离人声和背景音</strong>。</p><img src="/用一个周末训练了gls的AI歌手/640.png" alt="图片" style="zoom: 67%;" /><p>再对人声进一步做<strong>混响和声的消除</strong>。</p><img src="/用一个周末训练了gls的AI歌手/640-1692094473422.png" alt="图片" style="zoom:67%;" /><h4 id="数据切片"><a href="#数据切片" class="headerlink" title="数据切片"></a>数据切片</h4><p>使用Auto Slicer将录音文件切分成3~15s的声音片段。</p><p>注意文件名称，不能有数字和下划线之外的字符。</p><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/640-1692094747344.png" alt="图片"></p><p>大概有4000条音频片段，复制到so-vits-svc中的dataset_raw文件夹。</p><h4 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h4><ul><li>数据如果放置正确，可以识别到数据集所在的文件夹。</li><li>这里使用vec768I12模型，f0预测器选择rmvpe。</li><li>实测CPU线程数设置为2，12G的显存也会爆炸，不建议尝试。</li><li>详细配置如下图：</li></ul><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/image-20230815182614695.png" alt="image-20230815182614695"></p><ul><li>数据预处理跑了1h47m，之前跑了一半显存爆炸了，调小了线程数重新跑。</li></ul><h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><ul><li>选择cuda缓存</li></ul><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/S3_1LT%7DLT3UI020DVY6UU.jpg" alt="img"></p><p>早上开始跑，下午回来已经跑了8000 steps了</p><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/image-20230815183444554.png" alt="image-20230815183444554"></p><h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><ul><li><p>上传的音频也需要是经过UVR去除背景声的版本，只留人声。</p></li><li><p>f0预测器选择pm非常快，一首歌只需要十几秒的推理。实测和rmvpe差别不大</p><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/image-20230815183745850.png" alt="image-20230815183745850"></p></li><li><p>遇到cuda内存不足的情况可以在右下角切片。</p></li></ul><h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><ul><li>音色真的非常像，很惊喜，但是如果一起唱，还是能听出差别呜呜</li><li>但很多歌咬字不清晰，也是vec768I12的预料之内的毛病了。</li><li>中音恢复较好，低音和高音有时候不像，部分歌会有哑音。</li><li>会有一点音色泄露，所以音源用男生的都恢复得不好。</li></ul><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/image-20230815185457967.png" alt="image-20230815185457967"></p><p>很高兴她能喜欢，开心最重要啦~</p><p><img src="/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/1.gif" alt="image-20230815185922109"></p><p><strong>参考</strong></p><ul><li><p><a href="https://mp.weixin.qq.com/s?src=11&timestamp=1692084194&ver=4713&signature=Tk-wjuxfbadt98tYisFAuIihDwUoi-fdhodULvx9p-HRx0oeLSPm1xx7QTyhs0Gv3XUhDgege3UUgniwha6BH7AqQEHQqEnuvTHWptGp1c*S7E29EqS1yJXKLg77S3g1&new=1">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1692084194&amp;ver=4713&amp;signature=Tk-wjuxfbadt98tYisFAuIihDwUoi-fdhodULvx9p-HRx0oeLSPm1xx7QTyhs0Gv3XUhDgege3UUgniwha6BH7AqQEHQqEnuvTHWptGp1c*S7E29EqS1yJXKLg77S3g1&amp;new=1</a></p></li><li><p><a href="https://www.yuque.com/umoubuton/ueupp5">https://www.yuque.com/umoubuton/ueupp5</a></p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;方案&quot;&gt;&lt;a href=&quot;#方案&quot; class=&quot;headerlink&quot; title=&quot;方案&quot;&gt;&lt;/a&gt;方案&lt;/h3&gt;&lt;p&gt;Github上大名鼎鼎的&lt;a href=&quot;https://github.com/svc-develop-team/so-vits-svc&quot;&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="其他" scheme="https://vymv.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title>就在昨天！闫令琪访问了我们组！！！</title>
