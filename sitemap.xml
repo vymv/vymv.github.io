@@ -2,18 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vymv.github.io/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/</loc>
-    
-    <lastmod>2024-09-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://vymv.github.io/%E7%90%83%E8%B0%90Deringing/</loc>
     
-    <lastmod>2024-09-16</lastmod>
+    <lastmod>2024-09-21</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +13,25 @@
   <url>
     <loc>https://vymv.github.io/drafts/%E5%85%B3%E4%BA%8E%E5%8F%8B%E6%83%85%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5.html</loc>
     
-    <lastmod>2024-09-16</lastmod>
+    <lastmod>2024-09-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vymv.github.io/drafts/index.html</loc>
+    
+    <lastmod>2024-09-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vymv.github.io/%E7%94%A8%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB%E8%AE%AD%E7%BB%83%E4%BA%86gls%E7%9A%84AI%E6%AD%8C%E6%89%8B/</loc>
+    
+    <lastmod>2024-09-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,57 +112,57 @@
 
   <url>
     <loc>https://vymv.github.io/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://vymv.github.io/tags/AI%E7%BB%98%E7%94%BB/</loc>
-    <lastmod>2024-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vymv.github.io/tags/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2024-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vymv.github.io/tags/Screen-Probe/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vymv.github.io/tags/Rendering/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vymv.github.io/tags/%E5%85%B6%E4%BB%96/</loc>
+    <lastmod>2024-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vymv.github.io/tags/AI%E7%BB%98%E7%94%BB/</loc>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vymv.github.io/tags/%E7%A6%BB%E7%BA%BF%E6%B8%B2%E6%9F%93/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vymv.github.io/tags/%E5%AE%9E%E6%97%B6%E6%B8%B2%E6%9F%93/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vymv.github.io/tags/%E5%89%8D%E6%B2%BF%E8%AE%BA%E6%96%87/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -161,15 +170,15 @@
 
   
   <url>
-    <loc>https://vymv.github.io/categories/AI%E7%BB%98%E7%94%BB/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <loc>https://vymv.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vymv.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2024-09-19</lastmod>
+    <loc>https://vymv.github.io/categories/AI%E7%BB%98%E7%94%BB/</loc>
+    <lastmod>2024-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

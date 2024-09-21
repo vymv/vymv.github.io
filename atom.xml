@@ -6,7 +6,7 @@
   <link href="https://vymv.github.io/atom.xml" rel="self"/>
   
   <link href="https://vymv.github.io/"/>
-  <updated>2024-09-16T15:01:56.282Z</updated>
+  <updated>2024-09-21T12:33:57.718Z</updated>
   <id>https://vymv.github.io/</id>
   
   <author>
@@ -21,11 +21,21 @@
     <link href="https://vymv.github.io/%E7%90%83%E8%B0%90Deringing/"/>
     <id>https://vymv.github.io/%E7%90%83%E8%B0%90Deringing/</id>
     <published>2024-09-16T15:01:56.000Z</published>
-    <updated>2024-09-16T15:01:56.282Z</updated>
+    <updated>2024-09-21T12:33:57.718Z</updated>
+    
+    <content type="html"><![CDATA[<p>球谐函数在实时渲染中，常常被用于拟合<strong>球面函数</strong>，例如环境贴图，光照探针等。</p><h3 id="什么是Ringing？"><a href="#什么是Ringing？" class="headerlink" title="什么是Ringing？"></a>什么是Ringing？</h3><p>众所周知，低阶Spherical Harmonics（下称SH），只擅长拟合低频信息。如果强行使用低阶SH拟合高频Cubemap，就会导致球谐异常震荡，在采样时出现一些异常值。</p><p><strong>例如：</strong></p><ul><li>一张Cubemap中有一些小而亮的光源，亮度&gt;1，其余部分亮度很小，大多接近于0。</li><li>亮面（亮度&gt;10）和暗面颜色（亮度&lt;0.1）差距过大。</li></ul><p>以上情况均容易产生球谐Ringing的问题（图待补充），经常表现为采样出负值。</p><h3 id="UE4-ILC的补偿法"><a href="#UE4-ILC的补偿法" class="headerlink" title="UE4 ILC的补偿法"></a>UE4 ILC的补偿法</h3><p>很直观，把亮度最小的方向，补偿到亮度最大方向的0.05即可。</p><p>那么亮度最大的方向，是哪个方向呢？</p><p><img src="v2-2f2058a77a4e08b87acffde8356db8aa_720w.png" alt="img"></p><p>其实很直观，就是一阶球谐的三个方向，即(-f<sub>1</sub><sup>1</sup>,-f<sub>1</sub><sup>-1</sup>,f<sub>1</sub><sup>0</sup>)</p><p><strong>UE4.26代码位置</strong></p><ul><li>UpdateCache() // IndirectLightingCache.cpp<ul><li>FinalizeUpdateInternal_RenderThread()<ul><li>UpdateBlocks()<ul><li>UpdateBlock()<ul><li>InterpolatePoint()<ul><li>PrecomputedLightVolume-&gt;InterpolateIncidentRadiancePoint() （PrecomputedLightVolume.cpp）计算AccumulatedIncidentRadiance</li><li>ReduceSHRinging(AccumulatedIncidentRadiance)</li></ul></li></ul></li></ul></li></ul></li></ul></li></ul><p><img src="image-20240916232405005.png" alt="image-20240916232405005"></p><h3 id="UE4-VLM的曲率约束法"><a href="#UE4-VLM的曲率约束法" class="headerlink" title="UE4 VLM的曲率约束法"></a>UE4 VLM的曲率约束法</h3><p><strong>拉普拉斯算子</strong>能描述函数当前值$f(x)$与其附近周边点的平均值之间的差值，也可以近似理解为<strong>曲率</strong>。</p><p>其值越小，则振铃效应越小。基于这个特性，我们可以求一个新的球谐函数$g$，能最小化如下误差：</p><script type="math/tex; mode=display">E(g)=\int(\tilde{f}(s)-f(s))^2 d s+\lambda \int(\Delta \tilde{f})^2</script><p>$E$对$g$求导，令导数 = 0，能得到$g$和$f$的关系：</p><script type="math/tex; mode=display">g_k =  \frac{f_k}{(1+\lambda h_k)} = \frac{f_k}{1+\lambda l^2(l+1)^2}</script><p>令$L_l = l^2(l+1)^2$，有$g_k = \frac{f_k}{1+\lambda L_l}$，令$B$为$(f_k)^2$</p><p>则拉普拉斯算子：</p><script type="math/tex; mode=display">\Delta^2=\sum_{l=1}^n \sum_{m--l}^l l^2(l+1)^2\left(g_l^m\right)^2=\sum_{l=1}^n l^2(l+1)^2 \sum_{m--l}^l\left(\frac{f_k}{1+\lambda L_l}\right)^2=\sum_{l=1}^n \frac{L_l B_l}{\left(1+\lambda L_l\right)^2}</script><p>根据用户指定的拉普拉斯算子值，可以得到一个关于$\lambda$的方程，使用牛顿迭代法求解方程的根即可。</p><script type="math/tex; mode=display">\lambda_{n+1} = \lambda_{n} - \frac{f(\lambda_n)}{f'(\lambda_n)}</script><script type="math/tex; mode=display">f(\lambda) = \Delta^2 - \sum_{l=1}^{n}\frac{L_lB_l}{(1+\lambda L_l)^2}</script><script type="math/tex; mode=display">f'(\lambda) = 2\sum_{l=1}^{n}\frac{L_l^2B_l}{(1+\lambda L_l)^3}</script><p>解出$\lambda$即可带入求出$g$。</p><p><strong>UE4.26代码位置</strong></p><ul><li><p>AdaptiveVolumetricLightmap.cpp ProcessVolumetricLightmapBrickTask()</p></li><li><p>SHMath.h：FindWindowingLambda()</p></li></ul><h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><p>此外<strong>窗函数法</strong>因为没法实时处理，因而不在考虑范围内。</p><p>以上两种方案，测试下来，都<strong>难以彻底消除高亮区域对暗部产生的影响</strong>。</p><p>例如，高亮是红色，暗部原本是蓝色的球谐，因为拟合出现Ringing导致暗部蓝色采样出来变成负值，此时使用上述两种方法Deringing后，负值处都变成了淡红色。</p><p>问题的本质在于低亮度和高亮度一起投影到球谐相互影响。</p><p>如果已知球谐需要采样的normal方向，可以考虑<strong>仅积分normal上半球</strong>来避免上下半球亮度差距过大，给球谐拟合带来的影响。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;球谐函数在实时渲染中，常常被用于拟合&lt;strong&gt;球面函数&lt;/strong&gt;，例如环境贴图，光照探针等。&lt;/p&gt;
+&lt;h3 id=&quot;什么是Ringing？&quot;&gt;&lt;a href=&quot;#什么是Ringing？&quot; class=&quot;headerlink&quot; title=&quot;什么是Ringin</summary>
+      
     
     
     
     
+    <category term="实时渲染" scheme="https://vymv.github.io/tags/%E5%AE%9E%E6%97%B6%E6%B8%B2%E6%9F%93/"/>
     
   </entry>
   
